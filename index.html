@@ -28,13 +28,15 @@
 @media(max-width:360px){#app{padding-left:8px;padding-right:8px}.app-header{height:60px}.brand-centered h1{font-size:12px;letter-spacing:1px}.brand-centered small{font-size:5px;letter-spacing:1px}.header-profile{width:32px;height:32px;flex-basis:32px}.language-toggle{font-size:9px;padding:6px}.home-menu-label{margin-top:clamp(28px,10vh,72px);font-size:7px}.home-modes{gap:4px}.home-modes .mode{height:94px;border-radius:8px}.home-modes .mode-image{height:39px;flex-basis:39px}.home-modes .mode-copy{padding:5px 2px}.home-modes .mode strong{font-size:7px}.home-modes .mode-foot{font-size:4px}}
 @media(min-width:700px){#app{width:min(100%,720px)}.home-modes{max-width:680px}.home-menu-label{margin-top:clamp(60px,14vh,140px)}}
 
-/* Android layout refinement: reduce wallpaper scale and anchor profile save action */
+/* Android layout refinement v2: correctly size all three wallpaper layers */
 .ronda-scene{
-  background-size:100% 100%,auto 72dvh!important;
-  background-repeat:no-repeat!important;
-  background-position:center,center top!important;
+  background-size:100% 100%,100% 100%,auto 58dvh!important;
+  background-repeat:no-repeat,no-repeat,no-repeat!important;
+  background-position:center,center,center top!important;
   background-color:#090807;
 }
+#profile .stack{position:fixed!important;left:12px!important;right:12px!important;bottom:calc(10px + env(safe-area-inset-bottom))!important;z-index:999!important;width:min(calc(100% - 24px),496px)!important;margin:0 auto!important;background:rgba(12,11,9,.96)!important}
+#profile .stack .btn{display:block!important;width:100%!important;margin:0!important}
 #profile{min-height:calc(100dvh - 60px);padding-bottom:calc(82px + env(safe-area-inset-bottom))}
 #profile .panel{padding-bottom:20px!important}
 #profile .stack{
