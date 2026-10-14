@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#080d15">
+<title>1711 Chess Arena</title>
+<style>
+:root{color-scheme:dark;--bg:#080d15;--panel:#121d2c;--gold:#d4b27a;--muted:#8c9bb1}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;min-height:100%;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:radial-gradient(ellipse at 50% 0%,#26334a 0,transparent 48%),var(--bg);color:#f1f5fb}
+body{min-height:100vh;display:flex;justify-content:center}
+main{width:min(100%,520px);padding:24px 18px 32px}
+.brand{display:flex;align-items:center;gap:12px;margin:8px 0 28px}
+.logo{width:52px;height:52px;display:grid;place-items:center;border-radius:16px;background:linear-gradient(145deg,#293b56,#101927);border:1px solid #ffffff1c;font-size:29px;box-shadow:0 12px 26px #0006}
+h1{font-size:19px;margin:0;font-weight:850;letter-spacing:.2px}
+.sub{font-size:11px;color:var(--muted);margin-top:4px;letter-spacing:1.7px}
+.hero{border:1px solid #d4b27a38;border-radius:24px;padding:23px 20px;background:radial-gradient(ellipse at 50% 110%,#8c592d42,transparent 58%),linear-gradient(145deg,#1a2638,#0b111c);box-shadow:0 18px 42px #0005}
+.eyebrow{font-size:10px;letter-spacing:2.4px;font-weight:900;color:var(--gold)}
+.art{display:flex;align-items:center;justify-content:center;gap:20px;font-family:Georgia,serif;font-size:76px;line-height:1;margin:18px 0 20px;text-shadow:0 9px 14px #0009}
+.art span:first-child{color:#b97c43;-webkit-text-stroke:1px #08090c}.art span:last-child{color:#e2c58e}
+h2{font-size:24px;line-height:1.18;margin:0 0 9px}
+p{font-size:13px;line-height:1.6;color:#9ba9bd;margin:0}
+.section{font-size:12px;font-weight:800;color:#cbd5e3;margin:22px 2px 10px}
+.features{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.feature{padding:14px 12px;border-radius:15px;background:linear-gradient(145deg,#182538,#101824);border:1px solid #ffffff12;min-height:82px}
+.icon{font-size:20px;margin-bottom:8px}.name{font-size:12px;font-weight:800}.status{font-size:10px;color:var(--muted);margin-top:4px}
+.note{margin-top:18px;padding:13px 14px;border:1px solid #d4b27a2b;border-radius:14px;background:#d4b27a0a;font-size:11px;line-height:1.55;color:#c7b38f}
+footer{text-align:center;color:#617087;font-size:10px;letter-spacing:1px;margin-top:23px}
+</style>
+</head>
+<body>
+<main>
+  <header class="brand"><div class="logo">♟</div><div><h1>1711 Chess Arena</h1><div class="sub">ANDROID EDITION</div></div></header>
+  <section class="hero">
+    <div class="eyebrow">PROJECT INITIALIZED</div>
+    <div class="art"><span>♞</span><span>♛</span></div>
+    <h2>Your next chess arena<br>starts here.</h2>
+    <p>A standalone Android edition with its own player accounts and online services, separate from the Telegram version.</p>
+  </section>
+  <div class="section">PLANNED GAME MODES</div>
+  <section class="features">
+    <div class="feature"><div class="icon">♟</div><div class="name">VS Bot</div><div class="status">Planned</div></div>
+    <div class="feature"><div class="icon">⚔</div><div class="name">Random Match</div><div class="status">Planned</div></div>
+    <div class="feature"><div class="icon">⌂</div><div class="name">Private Room</div><div class="status">Planned</div></div>
+    <div class="feature"><div class="icon">♙</div><div class="name">Friends & Profile</div><div class="status">Planned</div></div>
+  </section>
+  <div class="note"><strong>Build 0.1.0 · Foundation</strong><br>This first build confirms the separate Android project can be packaged. Guest/Google sign-in, the chessboard, and multiplayer will be connected in later milestones.</div>
+  <footer>1711 CHESS ARENA · INDEPENDENT ANDROID PROJECT</footer>
+</main>
+</body>
+</html>
