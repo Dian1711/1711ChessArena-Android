@@ -28,33 +28,31 @@
 @media(max-width:360px){#app{padding-left:8px;padding-right:8px}.app-header{height:60px}.brand-centered h1{font-size:12px;letter-spacing:1px}.brand-centered small{font-size:5px;letter-spacing:1px}.header-profile{width:32px;height:32px;flex-basis:32px}.language-toggle{font-size:9px;padding:6px}.home-menu-label{margin-top:clamp(28px,10vh,72px);font-size:7px}.home-modes{gap:4px}.home-modes .mode{height:94px;border-radius:8px}.home-modes .mode-image{height:39px;flex-basis:39px}.home-modes .mode-copy{padding:5px 2px}.home-modes .mode strong{font-size:7px}.home-modes .mode-foot{font-size:4px}}
 @media(min-width:700px){#app{width:min(100%,720px)}.home-modes{max-width:680px}.home-menu-label{margin-top:clamp(60px,14vh,140px)}}
 
-/* Android layout refinement v2: correctly size all three wallpaper layers */
+/* Android layout fix v3: the active wallpaper has TWO layers (gradient + photo).
+   Size the photo independently so it is not stretched across the full screen. */
 .ronda-scene{
-  background-size:100% 100%,100% 100%,auto 58dvh!important;
-  background-repeat:no-repeat,no-repeat,no-repeat!important;
-  background-position:center,center,center top!important;
-  background-color:#090807;
+  background-size:100% 100%,100% 58dvh!important;
+  background-repeat:no-repeat,no-repeat!important;
+  background-position:center top,center top!important;
+  background-color:#090807!important;
 }
-#profile .stack{position:fixed!important;left:12px!important;right:12px!important;bottom:calc(10px + env(safe-area-inset-bottom))!important;z-index:999!important;width:min(calc(100% - 24px),496px)!important;margin:0 auto!important;background:rgba(12,11,9,.96)!important}
-#profile .stack .btn{display:block!important;width:100%!important;margin:0!important}
-#profile{min-height:calc(100dvh - 60px);padding-bottom:calc(82px + env(safe-area-inset-bottom))}
-#profile .panel{padding-bottom:20px!important}
-#profile .stack{
-  position:fixed;
-  left:12px;
-  right:12px;
-  bottom:calc(10px + env(safe-area-inset-bottom));
-  z-index:20;
-  margin:0 auto;
-  width:min(calc(100% - 24px),496px);
-  padding:8px;
-  border:1px solid #d7b56d88;
-  border-radius:12px;
-  background:rgba(12,11,9,.94);
-  backdrop-filter:blur(8px);
-  box-shadow:0 4px 22px #0009;
+#profile{min-height:calc(100dvh - 60px);padding-bottom:calc(100px + env(safe-area-inset-bottom))!important}
+#profile .profile-save-dock{
+  position:fixed!important;
+  left:12px!important;
+  right:12px!important;
+  bottom:calc(10px + env(safe-area-inset-bottom))!important;
+  z-index:1000!important;
+  width:min(calc(100% - 24px),496px)!important;
+  margin:0 auto!important;
+  padding:8px!important;
+  border:1px solid #d7b56d88!important;
+  border-radius:12px!important;
+  background:rgba(12,11,9,.97)!important;
+  box-shadow:0 4px 22px #0009!important;
+  backdrop-filter:blur(8px)!important;
 }
-#profile .stack .btn{width:100%;margin:0}
+#profile .profile-save-dock .btn{display:block!important;width:100%!important;margin:0!important}
 </style></head><body><div id="app">
 <header class="app-header"><button class="header-profile" onclick="showScreen('profile')" aria-label="Open user profile"><span id="headerAvatar">T</span></button><div class="brand brand-centered"><div><h1>CHESS ARENA <span>1711</span></h1><small>STRATEGY • FOCUS • VICTORY</small></div></div><button class="language-toggle" onclick="toggleLanguageMenu()" aria-label="Change language">🌐 <span id="languageFlag">🇮🇩</span> <span id="languageCode">ID</span></button><div class="language-menu" id="languageMenu"><button onclick="setLanguage('id')">🇮🇩 Bahasa Indonesia</button><button onclick="setLanguage('en')">🇬🇧 English</button></div></header>
 <section id="home" class="screen active">
@@ -71,7 +69,7 @@
 <section id="random" class="screen"><button class="back" onclick="showScreen('home')">← BACK TO HOME</button><div class="kicker">ONLINE PLAY</div><h2>Random Match</h2><p>Get ready for your next opponent.</p><div class="panel"><div class="hero-art" style="font-size:48px">⚔</div><h2 style="font-size:19px;text-align:center">Find your opponent</h2><p style="text-align:center">Choose a time control before searching.</p><div class="pills" style="justify-content:center"><button class="pill selected" onclick="pick(this,'randomTime')">10 min</button><button class="pill" onclick="pick(this,'randomTime')">5 min</button><button class="pill" onclick="pick(this,'randomTime')">3 min</button></div><input id="randomTime" type="hidden" value="10 min"><button class="btn" onclick="notify('Online matchmaking is not connected yet.')">FIND MATCH</button></div><div class="notice">Matchmaking needs a separate Android backend. The Telegram service remains untouched.</div></section>
 <section id="private" class="screen"><button class="back" onclick="showScreen('home')">← BACK TO HOME</button><div class="kicker">PLAY YOUR WAY</div><h2>Private Room</h2><p>Create a room or join with an invite code.</p><div class="panel"><div class="kicker">JOIN A ROOM</div><label class="field-label" for="roomCode">Room code</label><input id="roomCode" placeholder="Enter room code" maxlength="8"><div class="stack"><button class="btn" onclick="notify('Room joining will work after online services are connected.')">JOIN ROOM</button><button class="btn secondary" onclick="notify('Room creation will work after online services are connected.')">CREATE PRIVATE ROOM</button></div></div><div class="notice">Room creation and invitations are visual previews; no real room exists yet.</div></section>
 <section id="friends" class="screen"><button class="back" onclick="showScreen('home')">← BACK TO HOME</button><div class="kicker">YOUR CHESS CIRCLE</div><h2>Friends</h2><p>Manage your friends and challenge them.</p><div class="panel"><label class="field-label" for="friendName">Add by username</label><input id="friendName" placeholder="Enter player username"><div class="stack"><button class="btn" onclick="notify('Friend search will work after Android accounts are connected.')">SEARCH PLAYERS</button></div><div class="section-title"><span>MY FRIENDS</span><span>0 ONLINE</span></div><div class="friend-row"><div class="friend-dot">♙</div><div><strong style="font-size:12px">No friends yet</strong><p style="font-size:10px">Your friend list will appear here.</p></div></div></div><div class="notice">Friends, invites, and challenges need Android accounts and online services.</div></section>
-<section id="profile" class="screen"><button class="back" onclick="showScreen('home')">← BACK TO HOME</button><div class="kicker">PLAYER CARD</div><h2>Your Profile</h2><div class="panel" style="text-align:center;padding:23px"><div class="avatar-big" style="width:70px;height:70px;margin:0 auto 12px;font-size:25px">T</div><h2 id="profileDisplayName" style="font-size:19px;margin-bottom:5px">Teteng</h2><p>Guest player · Android Edition</p><label class="field-label" for="username">Display name</label><input id="username" value="Teteng" maxlength="24"><div class="stack"><button class="btn" onclick="saveName()">SAVE DISPLAY NAME</button></div><div class="stat-grid"><div class="stat"><strong>—</strong><small>WINS</small></div><div class="stat"><strong>—</strong><small>LOSSES</small></div><div class="stat"><strong>—</strong><small>DRAWS</small></div></div></div><div class="notice">Display name is preview-only. Guest/Google sign-in and synced stats are not connected yet.</div></section>
+<section id="profile" class="screen"><button class="back" onclick="showScreen('home')">← BACK TO HOME</button><div class="kicker">PLAYER CARD</div><h2>Your Profile</h2><div class="panel" style="text-align:center;padding:23px"><div class="avatar-big" style="width:70px;height:70px;margin:0 auto 12px;font-size:25px">T</div><h2 id="profileDisplayName" style="font-size:19px;margin-bottom:5px">Teteng</h2><p>Guest player · Android Edition</p><label class="field-label" for="username">Display name</label><input id="username" value="Teteng" maxlength="24"><div class="stack profile-save-dock"><button class="btn" onclick="saveName()">SAVE DISPLAY NAME</button></div><div class="stat-grid"><div class="stat"><strong>—</strong><small>WINS</small></div><div class="stat"><strong>—</strong><small>LOSSES</small></div><div class="stat"><strong>—</strong><small>DRAWS</small></div></div></div><div class="notice">Display name is preview-only. Guest/Google sign-in and synced stats are not connected yet.</div></section>
 <section id="game" class="screen"><button class="back" onclick="showScreen('home')">← EXIT GAME PREVIEW</button><div class="kicker" id="gameMode">PRACTICE PREVIEW</div><div class="game-info"><span>♚ <strong id="opponentName">Opponent</strong></span><span id="oppTime">10:00</span></div><div class="board-wrap"><div id="board" class="board" aria-label="Chess board preview"></div></div><div class="game-info"><span>♙ <strong id="playerName">Teteng</strong></span><span>10:00</span></div><div class="stack"><button class="btn secondary" onclick="notify('Game controls and move validation are not connected yet.')">GAME OPTIONS</button><button class="btn ghost" onclick="showScreen('home')">RETURN TO MENU</button></div><div class="notice">Board preview only. Legal moves, checkmate, castling, timers, and results are not implemented yet.</div></section>
 </div>
 <script>
