@@ -27,6 +27,32 @@
 .screen:not(#home){z-index:2}
 @media(max-width:360px){#app{padding-left:8px;padding-right:8px}.app-header{height:60px}.brand-centered h1{font-size:12px;letter-spacing:1px}.brand-centered small{font-size:5px;letter-spacing:1px}.header-profile{width:32px;height:32px;flex-basis:32px}.language-toggle{font-size:9px;padding:6px}.home-menu-label{margin-top:clamp(28px,10vh,72px);font-size:7px}.home-modes{gap:4px}.home-modes .mode{height:94px;border-radius:8px}.home-modes .mode-image{height:39px;flex-basis:39px}.home-modes .mode-copy{padding:5px 2px}.home-modes .mode strong{font-size:7px}.home-modes .mode-foot{font-size:4px}}
 @media(min-width:700px){#app{width:min(100%,720px)}.home-modes{max-width:680px}.home-menu-label{margin-top:clamp(60px,14vh,140px)}}
+
+/* Android layout refinement: reduce wallpaper scale and anchor profile save action */
+.ronda-scene{
+  background-size:100% 100%,auto 72dvh!important;
+  background-repeat:no-repeat!important;
+  background-position:center,center top!important;
+  background-color:#090807;
+}
+#profile{min-height:calc(100dvh - 60px);padding-bottom:calc(82px + env(safe-area-inset-bottom))}
+#profile .panel{padding-bottom:20px!important}
+#profile .stack{
+  position:fixed;
+  left:12px;
+  right:12px;
+  bottom:calc(10px + env(safe-area-inset-bottom));
+  z-index:20;
+  margin:0 auto;
+  width:min(calc(100% - 24px),496px);
+  padding:8px;
+  border:1px solid #d7b56d88;
+  border-radius:12px;
+  background:rgba(12,11,9,.94);
+  backdrop-filter:blur(8px);
+  box-shadow:0 4px 22px #0009;
+}
+#profile .stack .btn{width:100%;margin:0}
 </style></head><body><div id="app">
 <header class="app-header"><button class="header-profile" onclick="showScreen('profile')" aria-label="Open user profile"><span id="headerAvatar">T</span></button><div class="brand brand-centered"><div><h1>CHESS ARENA <span>1711</span></h1><small>STRATEGY • FOCUS • VICTORY</small></div></div><button class="language-toggle" onclick="toggleLanguageMenu()" aria-label="Change language">🌐 <span id="languageFlag">🇮🇩</span> <span id="languageCode">ID</span></button><div class="language-menu" id="languageMenu"><button onclick="setLanguage('id')">🇮🇩 Bahasa Indonesia</button><button onclick="setLanguage('en')">🇬🇧 English</button></div></header>
 <section id="home" class="screen active">
