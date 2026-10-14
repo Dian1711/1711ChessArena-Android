@@ -56,20 +56,18 @@
 }
 #profile .profile-save-dock .btn{display:block!important;width:100%!important;margin:0!important}
 
-/* Correct home layout: compact wallpaper, menu stays directly beneath it. */
-#app{padding-top:10px!important;padding-bottom:18px!important}
-.app-header,header{margin-bottom:12px!important}
-#home{display:none}
-#home.active{display:block!important}
-#home .ronda-wallpaper{height:clamp(145px,22vh,205px)!important;min-height:0!important;padding:0!important;margin:0 0 12px!important;border-radius:16px!important}
-#home .ronda-scene{height:100%!important;min-height:0!important;padding:0!important;background-size:cover!important;background-position:center 42%!important}
-#home .home-menu-label{margin:0 0 8px!important;text-align:center!important}
-#home .home-modes{margin:0 auto 12px!important;align-items:stretch!important}
-#home .home-modes .mode{height:96px!important;min-height:96px!important}
-#home .home-modes .mode-image{height:100%!important;min-height:100%!important;flex:none!important;inset:0!important;z-index:0!important}
-#home .home-modes .mode-copy{min-height:100%!important;justify-content:flex-end!important}
-@media(max-width:360px){#app{padding-left:8px!important;padding-right:8px!important}.app-header,header{margin-bottom:9px!important}#home .ronda-wallpaper{height:clamp(130px,20vh,175px)!important}#home .home-modes .mode{height:88px!important;min-height:88px!important}}
-@media(min-width:700px){#home .ronda-wallpaper{height:clamp(170px,24vh,225px)!important}#home .home-menu-label{margin-top:0!important}}
+
+/* Final home layout correction: wallpaper is a compact in-flow block, never a fixed full-screen layer. */
+#home{display:block!important;min-height:0!important;padding-bottom:12px!important}
+#home .ronda-wallpaper{position:relative!important;inset:auto!important;z-index:0!important;display:block!important;width:100%!important;height:clamp(145px,22vh,205px)!important;min-height:0!important;margin:0 0 12px!important;padding:0!important;overflow:hidden!important;border-radius:16px!important;background:#090807!important}
+#home .ronda-scene{position:absolute!important;inset:0!important;display:block!important;width:100%!important;height:100%!important;min-height:0!important;margin:0!important;padding:0!important;background-image:linear-gradient(180deg,rgba(4,4,4,.18) 0%,rgba(4,4,4,.06) 35%,rgba(4,4,4,.58) 100%),url('https://assets.pikiran-rakyat.com/crop/0x0%3A0x0/720x0/webp/photo/2025/09/11/3412094562.jpg')!important;background-size:cover!important;background-repeat:no-repeat!important;background-position:center 42%!important;background-color:#090807!important}
+#home .home-menu-label{display:block!important;margin:0 0 8px!important;text-align:center!important}
+#home .home-modes{display:grid!important;margin:0 auto 12px!important;align-items:stretch!important}
+#home .home-modes .mode{position:relative!important;height:96px!important;min-height:96px!important}
+#home .home-modes .mode-image{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;min-height:100%!important;flex:none!important;z-index:0!important}
+#home .home-modes .mode-copy{position:relative!important;z-index:1!important;min-height:100%!important;justify-content:flex-end!important}
+@media(max-width:360px){#app{padding-left:8px!important;padding-right:8px!important}#home .ronda-wallpaper{height:clamp(130px,20vh,175px)!important}#home .home-modes .mode{height:88px!important;min-height:88px!important}}
+@media(min-width:700px){#home .ronda-wallpaper{height:clamp(170px,24vh,225px)!important}}
 </style></head><body><div id="app">
 <header class="app-header"><button class="header-profile" onclick="showScreen('profile')" aria-label="Open user profile"><span id="headerAvatar">T</span></button><div class="brand brand-centered"><div><h1>CHESS ARENA <span>1711</span></h1><small>STRATEGY • FOCUS • VICTORY</small></div></div><button class="language-toggle" onclick="toggleLanguageMenu()" aria-label="Change language">🌐 <span id="languageFlag">🇮🇩</span> <span id="languageCode">ID</span></button><div class="language-menu" id="languageMenu"><button onclick="setLanguage('id')">🇮🇩 Bahasa Indonesia</button><button onclick="setLanguage('en')">🇬🇧 English</button></div></header>
 <section id="home" class="screen active">
