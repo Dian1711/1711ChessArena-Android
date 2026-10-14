@@ -13,7 +13,7 @@
 #home{position:relative;display:flex;flex-direction:column;min-height:calc(100dvh - 66px);padding-bottom:8px}
 #home:not(.active){display:none}
 .ronda-wallpaper{position:fixed;inset:0;width:100vw;height:100dvh;z-index:-1;padding:0;background:#090807;overflow:hidden}
-.ronda-scene{position:absolute;inset:0 auto auto 0;width:100%;height:50dvh;min-height:0;padding:0;background-image:linear-gradient(180deg,rgba(4,4,4,.48) 0%,rgba(4,4,4,.12) 34%,rgba(4,4,4,.32) 58%,rgba(4,4,4,.86) 100%),url('https://assets.pikiran-rakyat.com/crop/0x0%3A0x0/720x0/webp/photo/2025/09/11/3412094562.jpg');background-size:100% 100%,100% 100%;background-position:center top;display:block}
+.ronda-scene{position:absolute;inset:0;width:100%;height:100dvh;min-height:0;padding:0;background-image:linear-gradient(180deg,rgba(4,4,4,.48) 0%,rgba(4,4,4,.12) 34%,rgba(4,4,4,.32) 58%,rgba(4,4,4,.86) 100%),url('https://assets.pikiran-rakyat.com/crop/0x0%3A0x0/720x0/webp/photo/2025/09/11/3412094562.jpg');background-size:100% 100%,auto 100%;background-repeat:no-repeat,no-repeat;background-position:center top;display:block}
 .ronda-scene:before{border:0}
 .ronda-caption,.photo-credit,.hero-rule,.home-section-title{display:none!important}
 .home-menu-label{margin-top:auto;margin-bottom:9px;text-align:center;color:#f0d99c;font-size:8px;letter-spacing:2px;font-weight:900;text-shadow:0 2px 8px #000}
@@ -32,7 +32,8 @@
 /* Android layout fix v3: the active wallpaper has TWO layers (gradient + photo).
    Size the photo independently so it is not stretched across the full screen. */
 .ronda-scene{
-  background-size:100% 100%,100% 58dvh!important;
+  height:100dvh!important;
+  background-size:100% 100%,auto 100%!important;
   background-repeat:no-repeat,no-repeat!important;
   background-position:center top,center top!important;
   background-color:#090807!important;
