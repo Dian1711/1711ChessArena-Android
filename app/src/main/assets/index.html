@@ -277,6 +277,23 @@
  #home .home-modes .mode small{font-size:9px!important}
 }
 
+
+/* Approved home layout: compact hero, existing card artwork, boxed labels at each card bottom. */
+#home{display:block!important;min-height:0!important;padding-bottom:18px!important}
+#home .ronda-wallpaper{position:relative!important;inset:auto!important;display:block!important;width:100%!important;height:clamp(165px,25vh,230px)!important;min-height:0!important;margin:0 0 12px!important;padding:0!important;overflow:hidden!important;border:1px solid #d7b56d55!important;border-radius:16px!important;background:#090807!important}
+#home .ronda-scene{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;min-height:0!important;margin:0!important;padding:0!important;background-size:cover!important;background-position:center 45%!important}
+#home .ronda-caption,#home .photo-credit{display:none!important}
+#home .home-menu-label{display:block!important;margin:0 0 9px!important;text-align:center!important;color:#f0d99c!important;font-size:8px!important;letter-spacing:2px!important}
+#home .home-modes{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:7px!important;width:100%!important;margin:0 auto 12px!important}
+#home .home-modes .mode{display:flex!important;flex-direction:column!important;justify-content:flex-start!important;min-width:0!important;height:105px!important;min-height:105px!important;padding:0!important;overflow:hidden!important;border:1px solid #8c6a30!important;border-radius:10px!important;background:#100e0a!important}
+#home .home-modes .mode-image{display:block!important;position:relative!important;inset:auto!important;flex:1 1 auto!important;width:100%!important;height:0!important;min-height:0!important;border:0!important;background-size:cover!important;background-position:center!important}
+#home .home-modes .mode-copy{display:flex!important;flex:0 0 30px!important;align-items:center!important;justify-content:center!important;width:100%!important;min-height:30px!important;padding:3px 2px!important;background:#211a10!important;border-top:1px solid #8c6a30!important}
+#home .home-modes .mode strong{display:block!important;width:100%!important;font-size:clamp(7px,1.9vw,10px)!important;line-height:1.15!important;text-align:center!important;color:#f0d99c!important;overflow-wrap:anywhere!important}
+#home .home-modes .mode small,#home .home-modes .mode-foot{display:none!important}
+#app .brand-centered small{font-size:7px!important;letter-spacing:1.1px!important;margin-top:2px!important;color:#bda05f!important}
+@media(max-width:360px){#app{padding-left:8px!important;padding-right:8px!important}#home .ronda-wallpaper{height:clamp(140px,22vh,185px)!important}#home .home-modes{gap:4px!important}#home .home-modes .mode{height:90px!important;min-height:90px!important}#home .home-modes .mode-copy{flex-basis:28px!important;min-height:28px!important}}
+@media(min-width:700px){#home .ronda-wallpaper{height:clamp(190px,27vh,250px)!important}#home .home-modes{max-width:680px!important}}
+
 </style></head><body><div id="app">
 <header class="app-header"><button class="header-profile" onclick="showScreen('profile')" aria-label="Open user profile"><span id="headerAvatar">T</span></button><div class="brand brand-centered"><div><h1>CHESS ARENA <span>1711</span></h1><small>presented by Tank App</small></div></div><button class="language-toggle" onclick="toggleLanguageMenu()" aria-label="Change language">🌐 <span id="languageFlag">🇮🇩</span> <span id="languageCode">ID</span></button><div class="language-menu" id="languageMenu"><button onclick="setLanguage('id')">🇮🇩 Bahasa Indonesia</button><button onclick="setLanguage('en')">🇬🇧 English</button></div></header>
 <section id="home" class="screen active">
